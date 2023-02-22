@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pie Chart </title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Include Chart.js Library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+	<div class="container mt-5">
+		<h3 class="mb-3">Pie Chart </h3>
+		<div class="row">
+			<div class="col-md-4">
+				<form>
+					<div class="form-group">
+						<label for="input-value">Input Value:</label>
+						<input type="text" class="form-control" id="input-value" name="input-value">
+					</div>
+					<div class="form-group">
+						<label for="max-value">Max Value:</label>
+						<input type="text" class="form-control" id="max-value" name="max-value">
+					</div>
+					<button type="button" class="btn btn-primary" onclick="generatePieChart()">Generate Pie Chart</button>
+				</form>
+			</div>
+			<div class="col-md-8">
+				<canvas id="pie-chart"></canvas>
+			</div>
+		</div>
+	</div>
+
+	<!-- Include Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script>
+		function generatePieChart() {
+			// Get the input value and max value from the form
+			var inputValue = parseFloat($("#input-value").val());
+			var maxValue = parseFloat($("#max-value").val());
+
+			// Check if the input value is greater than the max value
+			if (inputValue > maxValue) {
+				alert("Input Value cannot be greater than Max Value");
+				return;
+			}
+
+			// Calculate the percentage of input value and max value
+			var inputPercentage = (inputValue / maxValue) * 100;
+			var maxPercentage = 100 - inputPercentage;
+
+			// Create the pie chart
+			var pieChart = new Chart($("#pie-chart"), {
+				type: 'pie',
+				data: {
+					labels: ['Input Value', 'Max Value'],
+					datasets: [{
+						data: [inputPercentage, maxPercentage],
+						backgroundColor: ['#E4EBF5', '#6EA3F2'],
+						borderWidth: 0
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					title: {
+						display: true,
+						text: 'Pie Chart'
+					},
+					legend: {
+						position: 'bottom',
+						labels: {
+							fontSize: 14,
+							padding: 10
+						}
+					}
+				}
+			});
+		}
+	</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vertical Bar Chart </title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Include Chart.js Library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+	<div class="container mt-5">
+		<h3 class="mb-3">Vertical Bar Chart </h3>
+		<div class="row">
+			<div class="col-md-4">
+				<form>
+					<div class="form-group">
+						<label for="input-value">Input Value:</label>
+						<input type="text" class="form-control" id="input-value" name="input-value">
+					</div>
+					<div class="form-group">
+						<label for="max-value">Max Value:</label>
+						<input type="text" class="form-control" id="max-value" name="max-value">
+					</div>
+					<button type="button" class="btn btn-primary" onclick="generateBarChart()">Generate Vertical Bar Chart</button>
+				</form>
+			</div>
+			<div class="col-md-8">
+				<canvas id="bar-chart"></canvas>
+			</div>
+		</div>
+	</div>
+	<!-- Include Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+	function generateBarChart() {
+		// Get the input value and max value from the form
+		var inputValue = parseFloat($("#input-value").val());
+		var maxValue = parseFloat($("#max-value").val());
+
+		// Check if the input value is greater than the max value
+		if (inputValue > maxValue) {
+			alert("Input Value cannot be greater than Max Value");
+			return;
+		}
+
+		// Calculate the percentage of input value and max value
+		var inputPercentage = (inputValue / maxValue) * 100;
+		var maxPercentage = 100 - inputPercentage;
+
+		// Create the bar chart
+		var barChart = new Chart($("#bar-chart"), {
+			type: 'bar',
+			data: {
+				labels: [''],
+				datasets: [{
+					label: 'Input Value',
+					data: [inputValue],
+					backgroundColor: '#E4EBF5'
+				},{
+					label: 'Max Value',
+					data: [maxValue],
+					backgroundColor: '#6EA3F2'
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				title: {
+					display: true,
+					text: 'Vertical Bar Chart'
+				},
+				scales: {
+					xAxes: [{
+						stacked: true,
+						ticks: {
+							display: false
+						}
+					}],
+					yAxes: [{
+						stacked: true,
+						ticks: {
+							min: 0,
+							max: maxValue,
+							stepSize: maxValue / 10
+						}
+					}]
+				},
+				legend: {
+					position: 'bottom',
+					labels: {
+						fontSize: 14,
+						padding: 10
+					}
+				}
+			}
+		});
+	}
+</script>
+
+<h7 style="padding-left: 50%;"> Done by D SAI SANTOSH</h7>
+</body>
+</html>
